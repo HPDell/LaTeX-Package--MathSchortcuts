@@ -1,0 +1,64 @@
+\documentclass{article}
+
+\usepackage{mathshortcuts}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{booktabs}
+
+\title{Math Shortcuts}
+\author{Yigong Hu}
+\date{ }
+
+\begin{document}
+
+\maketitle
+
+\section{Shortcut For Letters}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cccc}\toprule
+    \textbf{Lowercase Alphabet} & \textbf{Uppercase Alphabet} & \textbf{Lowercase Greek} & \textbf{Uppercase Greek}   \\\midrule
+    \verb"\va" \quad $\va$ & \verb"\vA" \quad $\vA$ & \verb"\valpha" \quad $\valpha$ & \\
+    \verb"\vb" \quad $\vb$ & \verb"\vB" \quad $\vB$ & \verb"\vbeta" \quad $\vbeta$ & \\
+    \verb"\vc" \quad $\vc$ & \verb"\vC" \quad $\vC$ & \verb"\vchi" \quad $\vchi$ & \\
+    \verb"\vd" \quad $\vd$ & \verb"\vD" \quad $\vD$ & \verb"\vdelta" \quad $\vdelta$ & \verb"\vDelta" \quad $\vDelta$ \\
+    \verb"\ve" \quad $\ve$ & \verb"\vE" \quad $\vE$ & \verb"\vepsilon" \quad $\vepsilon$ & \\
+    \verb"\vf" \quad $\vf$ & \verb"\vF" \quad $\vF$ & \verb"\veta" \quad $\veta$ & \\
+    \verb"\vg" \quad $\vg$ & \verb"\vG" \quad $\vG$ & \verb"\vgamma" \quad $\vgamma$ & \verb"\vGamma" \quad $\vGamma$ \\
+    \verb"\vh" \quad $\vh$ & \verb"\vH" \quad $\vH$ & \verb"\vtheta" \quad $\vtheta$ & \verb"\vTheta" \quad $\vTheta$ \\
+    \verb"\vi" \quad $\vi$ & \verb"\vI" \quad $\vI$ & \verb"\viota" \quad $\viota$ & \\
+    \verb"\vj" \quad $\vj$ & \verb"\vJ" \quad $\vJ$ & & \\
+    \verb"\vk" \quad $\vk$ & \verb"\vK" \quad $\vK$ & \verb"\vkappa" \quad $\vkappa$ & \\
+    \verb"\vl" \quad $\vl$ & \verb"\vL" \quad $\vL$ & \verb"\vlambda" \quad $\vlambda$ & \verb"\vLambda" \quad $\vLambda$ \\
+    \verb"\vm" \quad $\vm$ & \verb"\vM" \quad $\vM$ & \verb"\vmu" \quad $\vmu$ & \\
+    \verb"\vn" \quad $\vn$ & \verb"\vN" \quad $\vN$ & & \\
+    \verb"\vo" \quad $\vo$ & \verb"\vO" \quad $\vO$ & \verb"\vomega" \quad $\vomega$ & \verb"\vOmega" \quad $\vOmega$ \\
+    \verb"\vp" \quad $\vp$ & \verb"\vP" \quad $\vP$ & \verb"\vphi" \quad $\vphi$ & \verb"\vPhi" \quad $\vPhi$ \\
+    \verb"\vq" \quad $\vq$ & \verb"\vQ" \quad $\vQ$ & \verb"\vpi" \quad $\vpi$ & \verb"\vPi" \quad $\vPi$ \\
+    \verb"\vr" \quad $\vr$ & \verb"\vR" \quad $\vR$ & \verb"\vrho" \quad $\vrho$ & \\
+    \verb"\vs" \quad $\vs$ & \verb"\vS" \quad $\vS$ & \verb"\vsigma" \quad $\vsigma$ & \verb"\vSigma" \quad $\vSigma$ \\
+    \verb"\vt" \quad $\vt$ & \verb"\vT" \quad $\vT$ & \verb"\vtau" \quad $\vtau$ & \\
+    \verb"\vu" \quad $\vu$ & \verb"\vU" \quad $\vU$ & \verb"\vupsilon" \quad $\vupsilon$ & \verb"\vUpsilon" \quad $\vUpsilon$ \\
+    \verb"\bv" \quad $\bv$ & \verb"\vV" \quad $\vV$ & & \\
+    \verb"\vw" \quad $\vw$ & \verb"\vW" \quad $\vW$ & \verb"\vpsi" \quad $\vpsi$ & \verb"\vPsi" \quad $\vPsi$ \\
+    \verb"\vx" \quad $\vx$ & \verb"\vX" \quad $\vX$ & \verb"\vxi" \quad $\vxi$ & \verb"\vXi" \quad $\vXi$ \\
+    \verb"\vy" \quad $\vy$ & \verb"\vY" \quad $\vY$ & & \\
+    \verb"\vz" \quad $\vz$ & \verb"\vZ" \quad $\vZ$ & \verb"\vzeta" \quad $\vzeta$ & \\
+    \bottomrule
+    \end{tabular}
+    \caption{Shortcut for letters}
+    \label{tab:schortcut-letters}
+\end{table}
+
+\section{Other}
+
+\paragraph{Transpose} Command \verb"\T" will put a transpose mark on matrix $\vA$: $\vA\T$.
+
+\paragraph{Vector} Use \verb"\rvec{}" to quick add a round bracket to row vector elements: $\rvec{1,2,\cdots,n}$. For column vector, use \verb"\cvec{}" to add a transpose mark: $\cvec{1,2,\cdots,n}$. 
+The appearance will change in different environment. In display mode, auto-increased brackets are used:
+$$
+\vA = \cvec{\vA_{n_1}\T,\vA_{n_2}\T,\cdots,\vA_{n_m}\T}
+$$
+while in inline mode, normal brackets are used: $\vA = \cvec{\vA_{n_1}\T,\vA_{n_2}\T,\cdots,\vA_{n_m}\T}$.
+\end{document}
+
