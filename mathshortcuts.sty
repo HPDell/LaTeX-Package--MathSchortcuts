@@ -3,18 +3,25 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{mathshortcuts}[2022/02/05 Math Shortcuts]
 
-\RequirePackage{bm}
 \RequirePackage{forloop}
 \RequirePackage{amsmath}
+\RequirePackage{xparse}
+
+\@ifpackageloaded{unicode-math}{%
+    \newcommand{\mybm}[1]{\symbf{#1}}%
+}{%
+    \RequirePackage{bm}%
+    \newcommand{\mybm}[1]{\bm{#1}}%
+}%
 
 \newcommand{\defbf}[1]{\expandafter\newcommand\csname
-    v#1\endcsname{{\bm{#1}}}}
+    v#1\endcsname{{\mybm{#1}}}}
 \newcommand{\defubf}[1]{\expandafter\newcommand\csname
     vu#1\endcsname{{\mathbf{#1}}}}
 \newcounter{calBbCounter}
 \forLoop{1}{26}{calBbCounter}{
     \ifnum\value{calBbCounter}=22
-        \newcommand{\bv}{\bm{v}}
+        \newcommand{\bv}{\mybm{v}}
     \else
         \edef\letter{\alph{calBbCounter}}
         \expandafter\defbf\letter
@@ -26,47 +33,55 @@
     \edef\letter{\Alph{calBbCounter}}
     \expandafter\defbf\letter
 }
-\newcommand{\valpha}{\bm\alpha}
-\newcommand{\vbeta}{\bm\beta}
-\newcommand{\vchi}{\bm\chi}
-\newcommand{\vdelta}{\bm\delta}
-\newcommand{\vepsilon}{\bm\epsilon}
-\newcommand{\veta}{\bm\eta}
-\newcommand{\vgamma}{\bm\gamma}
-\newcommand{\viota}{\bm\iota}
-\newcommand{\vkappa}{\bm\kappa}
-\newcommand{\vlambda}{\bm\lambda}
-\newcommand{\vmu}{\bm\mu}
-\newcommand{\vomega}{\bm\omega}
-\newcommand{\vphi}{\bm\phi}
-\newcommand{\vpi}{\bm\pi}
-\newcommand{\vpsi}{\bm\psi}
-\newcommand{\vrho}{\bm\rho}
-\newcommand{\vsigma}{\bm\sigma}
-\newcommand{\vtau}{\bm\tau}
-\newcommand{\vtheta}{\bm\theta}
-\newcommand{\vupsilon}{\bm\upsilon}
-\newcommand{\vxi}{\bm\xi}
-\newcommand{\vzeta}{\bm\zeta}
-% \newcommand{\vdigamma}{\bm\digamma}
-\newcommand{\vDelta}{\bm\Delta}
-\newcommand{\vGamma}{\bm\Gamma}
-\newcommand{\vLambda}{\bm\Lambda}
-\newcommand{\vOmega}{\bm\Omega}
-\newcommand{\vPhi}{\bm\Phi}
-\newcommand{\vPi}{\bm\Pi}
-\newcommand{\vPsi}{\bm\Psi}
-\newcommand{\vSigma}{\bm\Sigma}
-\newcommand{\vTheta}{\bm\Theta}
-\newcommand{\vUpsilon}{\bm\Upsilon}
-\newcommand{\vXi}{\bm\Xi}
+\newcommand{\valpha}{\mybm\alpha}
+\newcommand{\vbeta}{\mybm\beta}
+\newcommand{\vchi}{\mybm\chi}
+\newcommand{\vdelta}{\mybm\delta}
+\newcommand{\vepsilon}{\mybm\epsilon}
+\newcommand{\veta}{\mybm\eta}
+\newcommand{\vgamma}{\mybm\gamma}
+\newcommand{\viota}{\mybm\iota}
+\newcommand{\vkappa}{\mybm\kappa}
+\newcommand{\vlambda}{\mybm\lambda}
+\newcommand{\vmu}{\mybm\mu}
+\newcommand{\vomega}{\mybm\omega}
+\newcommand{\vphi}{\mybm\phi}
+\newcommand{\vpi}{\mybm\pi}
+\newcommand{\vpsi}{\mybm\psi}
+\newcommand{\vrho}{\mybm\rho}
+\newcommand{\vsigma}{\mybm\sigma}
+\newcommand{\vtau}{\mybm\tau}
+\newcommand{\vtheta}{\mybm\theta}
+\newcommand{\vupsilon}{\mybm\upsilon}
+\newcommand{\vxi}{\mybm\xi}
+\newcommand{\vzeta}{\mybm\zeta}
+% \newcommand{\vdigamma}{\mybm\digamma}
+\newcommand{\vDelta}{\mybm\Delta}
+\newcommand{\vGamma}{\mybm\Gamma}
+\newcommand{\vLambda}{\mybm\Lambda}
+\newcommand{\vOmega}{\mybm\Omega}
+\newcommand{\vPhi}{\mybm\Phi}
+\newcommand{\vPi}{\mybm\Pi}
+\newcommand{\vPsi}{\mybm\Psi}
+\newcommand{\vSigma}{\mybm\Sigma}
+\newcommand{\vTheta}{\mybm\Theta}
+\newcommand{\vUpsilon}{\mybm\Upsilon}
+\newcommand{\vXi}{\mybm\Xi}
+\newcommand{\vzero}{\mybm{0}}
+\newcommand{\vones}{\mybm{1}}
 
 \DeclareMathOperator{\diag}{diag}
 \newcommand{\T}{^\mathrm{T}}
-\newcommand\rvec[2][]{%
-  \mathchoice{\left(#2\right)#1}
-  {(#2)#1}
-  {(#2)#1}
-  {(#2)#1}  
+\newcommand{\I}{^{-1}}
+\newcommand{\IG}{^{-}}
+
+\NewDocumentCommand{\rvec}{ m O{} }{%
+\mathchoice{\left(#1\right)#2}%
+  {(#1)#2}%
+  {(#1)#2}%
+  {(#1)#2}%
 }
-\newcommand{\cvec}[1]{\rvec[\T]{#1}}
+\NewDocumentCommand{\cvec}{ m O{} }{\rvec{#1}[#2]}
+
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\cov}{cov}
