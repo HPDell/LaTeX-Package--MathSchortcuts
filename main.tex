@@ -85,16 +85,32 @@ column vector $\vA = \cvec{\vA_{n_1}\T,\vA_{n_2}\T,\cdots,\vA_{n_m}\T}$.
 The appearance of brackets will change in different math modes. 
 In display mode, auto-increased brackets are used.
 \begin{dispExample}
-Row vector $$\vA = \rvec{\vA_{n_1}\T,\vA_{n_2}\T,\cdots,\vA_{n_m}\T}$$
-column vector $$\vA = \cvec{\vA_{n_1}\T,\vA_{n_2}\T,\cdots,\vA_{n_m}\T}$$
+Row vector 
+$$\vA = \rvec{\vA_{n_1}\T,\vA_{n_2}\T,\cdots,\vA_{n_m}\T}$$
+column vector 
+$$\vA = \cvec{\vA_{n_1}\T,\vA_{n_2}\T,\cdots,\vA_{n_m}\T}$$
 \end{dispExample}
 If something else like superscripts needs to be appended to a vector, use the optional argument.
 \begin{dispExample}
-Inverse of a matrix written in a vector: $$\vA = \rvec{\vA_{n_1}\T,\vA_{n_2}\T,\cdots,\vA_{n_m}\T}[\I]$$
+Inverse of a matrix written in a vector: 
+$$\vA = \rvec{\vA_{n_1}\T,\vA_{n_2}\T,\cdots,\vA_{n_m}\T}[\I]$$
 \end{dispExample}
 \end{docCommands}
 
+\begin{docCommand}{rsquared}{\oarg{type}\marg{value}}
+Show \rsquared{} with/without its value. The mandatory argument \meta{value} specify whether and what to show. The optional argument \meta{type} put subscript to \rsquared for use to show other related statistics.
+\begin{dispExample}
+Usually \rsquared{} is used to check fitness of regression models.
+The diagnostic information shows that, \rsquared{0.88} which is high.
+However, \rsquared{} usually increase with more variables.
+So sometimes we use \rsquared[adj]{} which is usually less than \rsquared{}. 
+In this model, \rsquared[adj]{0.85}.
+\end{dispExample}
+\end{docCommand}
 
+\begin{docCommand}{AIC}{\oarg{type}\marg{value}}
+    Show AIC with/without its value. The usage of this command is quite similar to that of \cs{rsquared}.
+\end{docCommand}
 
 \end{document}
 
