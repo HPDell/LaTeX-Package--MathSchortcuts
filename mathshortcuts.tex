@@ -1,7 +1,8 @@
 \documentclass{article}
 
+\usepackage{physics}
 \usepackage{mathshortcuts}
-\usepackage[margin=0.5in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{booktabs}
 \usepackage{tcolorbox}
 \tcbuselibrary{documentation,minted}
@@ -12,6 +13,18 @@
         colback=yellow!20!white
     }
 }
+\newtcolorbox{marker}[1][]{enhanced,
+  before skip balanced=2mm,after skip balanced=3mm,
+  boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+  colback=yellow!50,
+  colframe=yellow!20!black,
+  sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+  underlay={%
+    \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+    \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+    \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    },
+  drop fuzzy shadow,#1}
 
 \title{Math Shortcuts}
 \author{Yigong Hu}
@@ -111,6 +124,25 @@ In this model, \rsquared[adj]{0.85}.
 \begin{docCommand}{AIC}{\oarg{type}\marg{value}}
     Show AIC with/without its value. The usage of this command is quite similar to that of \cs{rsquared}.
 \end{docCommand}
+
+\section{Compatibility}
+
+\subsection{Fonts}
+
+This package now is compatible with \textbf{unicode-math} and \textbf{mathptmx}. Especially, when \textbf{unicode-math} is loaded, this package \textbf{mathshortcuts} use \cs{symbf} command to change characters into bold style; if \textbf{mathptmx} is loaded, \textbf{mathshortcuts} use \cs{mathbf} because using \textbf{mathptmx} with \textbf{bm} is not recommended. In other cases, \cs{bm} from package \textbf{bm} is used. 
+
+\subsection{Physics}
+
+As package \textbf{physics} also provides many shortcut commands, there are inevitably some conflicts between \textbf{physics} and \textbf{mathshortcuts}. In this situation, some commands from \textbf{physics} are renamed:
+\begin{itemize}
+    \item \cs{vb},\cs{va},\cs{vu} $\longrightarrow$ \cs{pvb}, \cs{pva}, \cs{pvu}
+    \item \cs{var} $\longrightarrow$ \cs{dvar}
+\end{itemize}
+For example, \verb"\pvb{a}" $\longrightarrow$ $\pvb{a}$, \verb"\pva{a}" $\longrightarrow$ $\pva{a}$, \verb"\pvu{a}" $\longrightarrow$ $\pvu{a}$ and \verb"\dvar{f}" $\longrightarrow$ $\dvar{f}$
+
+\begin{marker}
+Don't forget to load \textbf{physics} first and then \textbf{mathshortcuts}!
+\end{marker}
 
 \end{document}
 

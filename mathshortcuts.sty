@@ -20,25 +20,67 @@
     }
 }%
 
-\newcommand{\defbf}[1]{\expandafter\newcommand\csname
-    v#1\endcsname{{\mybm{#1}}}}
-\newcommand{\defubf}[1]{\expandafter\newcommand\csname
-    vu#1\endcsname{{\mathbf{#1}}}}
-\newcounter{calBbCounter}
-\forLoop{1}{26}{calBbCounter}{
-    \ifnum\value{calBbCounter}=22
-        \newcommand{\bv}{\mybm{v}}
-    \else
-        \edef\letter{\alph{calBbCounter}}
-        \expandafter\defbf\letter
-    \fi
-    \edef\letter{\alph{calBbCounter}}
-    \expandafter\defubf\letter
+\@ifpackageloaded{physics}{%
+    \DeclareDocumentCommand\va{}{\mybm{a}}%
+    \DeclareDocumentCommand\vb{}{\mybm{b}}%
+    \DeclareDocumentCommand\vu{}{\mybm{u}}%
+    \DeclareDocumentCommand\pva{}{\vectorarrow}%
+    \DeclareDocumentCommand\pvb{}{\vectorbold}%
+    \DeclareDocumentCommand\pvu{}{\vectorunit}%
+}{%
+    \newcommand{\va}{\mybm{a}}%
+    \newcommand{\vb}{\mybm{b}}%
+    \newcommand{\vu}{\mybm{u}}%
 }
-\forLoop{1}{26}{calBbCounter}{
-    \edef\letter{\Alph{calBbCounter}}
-    \expandafter\defbf\letter
-}
+\newcommand{\vc}{\mybm{c}}
+\newcommand{\vd}{\mybm{d}}
+\newcommand{\ve}{\mybm{e}}
+\newcommand{\vf}{\mybm{f}}
+\newcommand{\vg}{\mybm{g}}
+\newcommand{\vh}{\mybm{h}}
+\newcommand{\vi}{\mybm{i}}
+\newcommand{\vj}{\mybm{j}}
+\newcommand{\vk}{\mybm{k}}
+\newcommand{\vl}{\mybm{l}}
+\newcommand{\vm}{\mybm{m}}
+\newcommand{\vn}{\mybm{n}}
+\newcommand{\vo}{\mybm{o}}
+\newcommand{\vp}{\mybm{p}}
+\newcommand{\vq}{\mybm{q}}
+\newcommand{\vr}{\mybm{r}}
+\newcommand{\vs}{\mybm{s}}
+\newcommand{\vt}{\mybm{t}}
+\newcommand{\bv}{\mybm{v}}
+\newcommand{\vw}{\mybm{w}}
+\newcommand{\vx}{\mybm{x}}
+\newcommand{\vy}{\mybm{y}}
+\newcommand{\vz}{\mybm{z}}
+\newcommand{\vA}{\mybm{A}}
+\newcommand{\vB}{\mybm{B}}
+\newcommand{\vC}{\mybm{C}}
+\newcommand{\vD}{\mybm{D}}
+\newcommand{\vE}{\mybm{E}}
+\newcommand{\vF}{\mybm{F}}
+\newcommand{\vG}{\mybm{G}}
+\newcommand{\vJ}{\mybm{J}}
+\newcommand{\vH}{\mybm{H}}
+\newcommand{\vI}{\mybm{I}}
+\newcommand{\vK}{\mybm{K}}
+\newcommand{\vL}{\mybm{L}}
+\newcommand{\vM}{\mybm{M}}
+\newcommand{\vN}{\mybm{N}}
+\newcommand{\vO}{\mybm{O}}
+\newcommand{\vP}{\mybm{P}}
+\newcommand{\vQ}{\mybm{Q}}
+\newcommand{\vR}{\mybm{R}}
+\newcommand{\vS}{\mybm{S}}
+\newcommand{\vT}{\mybm{T}}
+\newcommand{\vU}{\mybm{U}}
+\newcommand{\vV}{\mybm{V}}
+\newcommand{\vW}{\mybm{W}}
+\newcommand{\vX}{\mybm{X}}
+\newcommand{\vY}{\mybm{Y}}
+\newcommand{\vZ}{\mybm{Z}}
 \newcommand{\valpha}{\mybm\alpha}
 \newcommand{\vbeta}{\mybm\beta}
 \newcommand{\vchi}{\mybm\chi}
@@ -89,6 +131,10 @@
 }
 \NewDocumentCommand{\cvec}{ m O{} }{{\rvec{#1}[#2]}\T}
 
+\@ifpackageloaded{physics}{%
+    \let\var\undefined
+    \DeclareDocumentCommand\dvar{}{\variation}
+}{}
 \DeclareMathOperator{\var}{var}
 \DeclareMathOperator{\cov}{cov}
 \NewDocumentCommand{\diagnostic}{ m O{} m }{%
